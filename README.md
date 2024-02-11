@@ -3,7 +3,7 @@
 # Go Version
 This downloads events via the API and sends them a file that is a single event per row.<br>
 Install go.<br>
-Copy all the files to the same directory.<br>
+Clone this repo or copy all files herein to the same directory.<br>
 Update the file "retrieveConfig" to be the appropriate URL for your team, and your private key.  Included are details for Online Boutique, do not share with customer.<br>
 The number of records is 50K, which you can adjust in retrieveWorking.go.  This is possible as this uses the DataPrime API and queries the archive specifically.  Otherwise the limit is 12K. The query string can also be adjusted here along with time parameters for query.<br>
 To run, the command "go run runAll.go"<br>
