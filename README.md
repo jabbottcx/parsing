@@ -17,4 +17,5 @@ To run, the command "go run runAll.go"<br>
 [] Adding argument for retrieveWorking to take a specific config file such as "<customer>Config"<br>
 [] Merge into single multi-step function<br>
 [] Extensive testing of patterns in Cx based on those designed from this output.<br>
+[] Add summary analytics to include number of events w/message, num w/body, etc.
 
