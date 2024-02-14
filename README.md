@@ -13,7 +13,7 @@ The number of records is 50K, which you can adjust in retrieveWorking.go.  This 
 To run, the command "go run runAll.go"<br>
 
 # Output
-The file finalOutput.json contains the events to be used in the RegEx editor in your process.  There is an additional file, FinalAnalysis.json, which provides a summary of different patterns found and the occurance count in the data set.
+The file finalOutput.json contains the events to be used in the RegEx editor in your process.  There is an additional file, FinalAnalysis.json, which provides a summary of different patterns found and the occurance count in the data set.  retrieveOutput and singleLineOutput are byproducts of the steps which I do not delete at end of processing; feel free to review to see what is being done at each step.
 
 # To Do
 [] Extensive testing of RegEx patterns based on those designed from this output.<br>
