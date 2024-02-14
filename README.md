@@ -2,7 +2,7 @@
 # Go Version
 This downloads events via the API and sends them a file that is a single event per row.<br>
 
-#Install go.<br>
+# Install go.<br>
 <br>
 Clone this repo or copy all files herein to the same directory.<br>
 <br>
