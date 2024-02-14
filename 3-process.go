@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Open the input file.
-	inputFile, err := os.Open("singleLineOutput.json")
+	inputFile, err := os.Open("singleLineOutput")
 	if err != nil {
 		fmt.Println("Error opening input file:", err)
 		return
@@ -45,14 +45,14 @@ func main() {
 			continue
 		}
 
-		// Unescape the userData JSON string.
+		// Unescape the userData JSON string. This automatically handles unicode characters.
 		var userData interface{}
 		if err := json.Unmarshal([]byte(userDataJSON), &userData); err != nil {
 			fmt.Println("Error unescaping userData:", err)
 			continue
 		}
 
-		// Marshal the userData back to JSON to normalize it.
+		// Marshal the userData back to JSON to normalize it, including proper representation of unicode characters.
 		userDataBytes, err := json.Marshal(userData)
 		if err != nil {
 			fmt.Println("Error marshaling userData to JSON:", err)
@@ -60,6 +60,7 @@ func main() {
 		}
 
 		// Write the unescaped and normalized userData JSON to the output file.
+		// This includes the correct representation of ASCII or UNICODE characters.
 		writer.Write(userDataBytes)
 		writer.WriteString("\n") // Add a newline after each record for readability.
 	}

@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	scripts := []string{"retrieveWorking.go", "toSingleLine.go", "processEscaped.go"}
+	scripts := []string{"1-retrieve.go", "2-singleLine.go", "3-process.go", "4-analyze.go"}
 
 	for _, script := range scripts {
 		// Compile the Go script
