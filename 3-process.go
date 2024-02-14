@@ -17,7 +17,7 @@ func main() {
 	defer inputFile.Close()
 
 	// Create the output file.
-	outputFile, err := os.Create("finalOutput.json")
+	outputFile, err := os.Create("finalOutput")
 	if err != nil {
 		fmt.Println("Error creating output file:", err)
 		return
@@ -52,20 +52,18 @@ func main() {
 			continue
 		}
 
-		// Marshal the userData back to JSON to normalize it, including proper representation of unicode characters.
-		userDataBytes, err := json.Marshal(userData)
-		if err != nil {
-			fmt.Println("Error marshaling userData to JSON:", err)
+		// Use json.Encoder to write userData directly to the output file, disabling HTML escaping.
+		encoder := json.NewEncoder(writer)
+		encoder.SetEscapeHTML(false) // Disable HTML escaping
+		if err := encoder.Encode(userData); err != nil {
+			fmt.Println("Error encoding userData to JSON:", err)
 			continue
 		}
-
-		// Write the unescaped and normalized userData JSON to the output file.
-		// This includes the correct representation of ASCII or UNICODE characters.
-		writer.Write(userDataBytes)
-		writer.WriteString("\n") // Add a newline after each record for readability.
+		// Note: Encoder.Encode adds its own newline, so you don't need to add another.
 	}
 
 	if err := scanner.Err(); err != nil {
 		fmt.Println("Error reading from input file:", err)
 	}
 }
+
