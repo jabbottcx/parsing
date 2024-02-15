@@ -17,7 +17,7 @@ func main() {
 	defer inputFile.Close()
 
 	// Create the output file.
-	outputFile, err := os.Create("finalOutput")
+	outputFile, err := os.Create("FinalOutput.json")
 	if err != nil {
 		fmt.Println("Error creating output file:", err)
 		return
@@ -66,4 +66,3 @@ func main() {
 		fmt.Println("Error reading from input file:", err)
 	}
 }
-
