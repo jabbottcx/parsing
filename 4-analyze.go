@@ -10,14 +10,13 @@ import (
 	"strings"
 )
 
-// Define a struct to hold each pattern and its count.
+// PatternCount holds each pattern and its count.
 type PatternCount struct {
 	Pattern string `json:"pattern"`
 	Count   int    `json:"count"`
 }
 
 func main() {
-	// Attempt to delete the files "singleLineOutput" and "retrieveOutput" if they exist.
 	deleteFileIfExists("singleLineOutput")
 	deleteFileIfExists("retrieveOutput")
 
@@ -49,29 +48,34 @@ func main() {
 		return
 	}
 
-	// Convert the map to a slice of PatternCount for sorting and JSON output.
 	var patterns []PatternCount
 	for pattern, count := range patternCounts {
 		patterns = append(patterns, PatternCount{Pattern: pattern, Count: count})
 	}
 
-	// Sort the slice for consistent output.
 	sort.Slice(patterns, func(i, j int) bool {
-		return patterns[i].Count > patterns[j].Count // Sort by count, descending
+		return patterns[i].Count > patterns[j].Count
 	})
 
-	// Marshal the slice into JSON.
 	finalData, err := json.MarshalIndent(patterns, "", "  ")
 	if err != nil {
 		fmt.Println("Error marshaling JSON:", err)
 		return
 	}
 
-	// Write the JSON to 'FinalAnalysis.json'.
 	err = os.WriteFile("FinalAnalysis.json", finalData, 0644)
 	if err != nil {
 		fmt.Println("Error writing to file:", err)
 		return
+	}
+}
+
+func deleteFileIfExists(filename string) {
+	if _, err := os.Stat(filename); err == nil {
+		err := os.Remove(filename)
+		if err != nil {
+			fmt.Println("Error deleting file:", err)
+		}
 	}
 }
 
@@ -82,26 +86,27 @@ func generatePattern(data interface{}) string {
 
 	switch reflect.TypeOf(data).Kind() {
 	case reflect.Map:
-		mapData, ok := data.(map[string]interface{})
-		if !ok {
-			return "invalid-map"
-		}
+		mapData := data.(map[string]interface{})
 		var keys []string
 		for key := range mapData {
 			keys = append(keys, key)
 		}
-		sort.Strings(keys) // Ensure consistent ordering
+		sort.Strings(keys)
 		pattern := "{"
 		for _, key := range keys {
 			pattern += fmt.Sprintf("%s:%s,", key, generatePattern(mapData[key]))
 		}
 		return trimSuffix(pattern, ",") + "}"
 	case reflect.Slice:
-		sliceData, ok := data.([]interface{})
-		if !ok || len(sliceData) == 0 {
+		sliceData := data.([]interface{})
+		if len(sliceData) == 0 {
 			return "[]"
 		}
-		return "[" + generatePattern(sliceData[0]) + "]"
+		pattern := "["
+		for _, elem := range sliceData {
+			pattern += generatePattern(elem) + ","
+		}
+		return trimSuffix(pattern, ",") + "]"
 	default:
 		return "value"
 	}
@@ -112,26 +117,4 @@ func trimSuffix(s, suffix string) string {
 		return s[:len(s)-len(suffix)]
 	}
 	return s
-}
-
-func getCustomerName(configFilePath string) (string, error) {
-	file, err := os.ReadFile(configFilePath)
-	if err != nil {
-		return "", fmt.Errorf("failed to read config file: %w", err)
-	}
-
-	var config struct {
-		CustomerName string `json:"customerName"`
-	}
-	
-	if err := json.Unmarshal(file, &config); err != nil {
-		return "", fmt.Errorf("failed to parse config JSON: %w", err)
-	}
-	
-	// Clean customerName by removing spaces and special characters
-	cleanName := regexp.MustCompile(`[^a-zA-Z0-9]+`).ReplaceAllString(config.CustomerName, "")
-	return cleanName, nil
-	}
-
-
 }
