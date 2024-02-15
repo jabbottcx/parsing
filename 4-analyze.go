@@ -17,7 +17,11 @@ type PatternCount struct {
 }
 
 func main() {
-	fileName := "finalOutput.json"
+	// Attempt to delete the files "singleLineOutput" and "retrieveOutput" if they exist.
+	deleteFileIfExists("singleLineOutput")
+	deleteFileIfExists("retrieveOutput")
+
+	fileName := "FinalOutput.json"
 	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println("Error opening file:", err)
@@ -108,4 +112,26 @@ func trimSuffix(s, suffix string) string {
 		return s[:len(s)-len(suffix)]
 	}
 	return s
+}
+
+func getCustomerName(configFilePath string) (string, error) {
+	file, err := os.ReadFile(configFilePath)
+	if err != nil {
+		return "", fmt.Errorf("failed to read config file: %w", err)
+	}
+
+	var config struct {
+		CustomerName string `json:"customerName"`
+	}
+	
+	if err := json.Unmarshal(file, &config); err != nil {
+		return "", fmt.Errorf("failed to parse config JSON: %w", err)
+	}
+	
+	// Clean customerName by removing spaces and special characters
+	cleanName := regexp.MustCompile(`[^a-zA-Z0-9]+`).ReplaceAllString(config.CustomerName, "")
+	return cleanName, nil
+	}
+
+
 }
