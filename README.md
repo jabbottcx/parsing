@@ -3,7 +3,7 @@
 This is intended to automate the process for downloading and preparing events to use RegEx tools to help write RegEx patterns.  It allows for the download of up to 50K records (instaed of only 2K with a manual download).  It does not automate the creation of RegEx patterns.
 
 # Dashboard
-This [dashboard]([https://onlineboutique.coralogix.com/opendashboards/goto/a32f69dabec293817459b5d619532a46](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhxdgSiwyn3)) is provided to highlight the common parsing conditions that need to be addressed.  This dashboard is not directly tied to the output of this module, but is intended to be used in concert.
+This [dashboard](htps://onlineboutique.coralogix.com/opendashboards/goto/a32f69dabec293817459b5d619532a46](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhxdgSiwyn3) is provided to highlight the common parsing conditions that need to be addressed.  This dashboard is not directly tied to the output of this module, but is intended to be used in concert.
 
 # This is written in Go, which you must have [Installed](https://go.dev/doc/install)<br>
 <br>
