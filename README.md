@@ -9,7 +9,7 @@ This [dashboard](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhx
 
 # Usage
 <br>
-1. This utility is written in Go, which you must have [installed](https://go.dev/doc/install). <br>
+1. This utility is written in Go, which you must [install](https://go.dev/doc/install). <br>
 <br>
 2. Clone this repo, or download all files herein to the same directory.<br>
 <br>
