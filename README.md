@@ -14,7 +14,7 @@ This [dashboard](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhx
 2. Clone this repo, or download all files herein to the same directory.<br>
 <br>
 3. Update the file "retrieveConfig" to include:<br>
-&nbsp&nbsp&nbspa. the appropriate __url__ for the target team (required)<br>
+&nbsp&nbsp&nbspa. the appropriate _url_ for the target team (required)<br>
 &nbsp&nbsp&nbspb. the __privateKey__ for that team (required)<br>
 &nbsp&nbsp&nbspc. the __startDate__ and __endDate__<br><br>
   Optionally, you can revise the query parameters to target specific focus areas.<br><br>
