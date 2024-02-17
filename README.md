@@ -29,6 +29,3 @@ The output consistents of two files:<br><br>
 <strong>FinalOutout</strong>, which contains the individual events. This file can be used in RegEx101 or other tool.<br> <br>
 <strong>FinalAnalysis</strong>, which provides a summary of different JSON patterns of the individual events.<br><br> 
 Each time the process is run, these files will be overwritten, so save them if you want to retain them. <br>
-
-# To Do
-[] Extensive testing of RegEx patterns based on those designed from this output.<br>
