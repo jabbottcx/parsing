@@ -14,12 +14,12 @@ This [dashboard](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhx
 2. Clone this repo, or download all files herein to the same directory.<br>
 <br>
 3. Update the file "retrieveConfig" to include:<br>
-  a. the appropriate #url for the target team (required)<br>
-  b. the #privateKey for that team (required)<br>
-  c. the #startDate and #endDate<br><br>
+&nbsp&nbsp&nbspa. the appropriate __url__ for the target team (required)<br>
+&nbsp&nbsp&nbspb. the __privateKey__ for that team (required)<br>
+&nbsp&nbsp&nbspc. the __startDate__ and __endDate__<br><br>
   Optionally, you can revise the query parameters to target specific focus areas.<br><br>
-  d. the #query, in the appropriate format as determined by the #syntax element. The default is DataPrime. The query can be used to target priority events, such as those without a message field.<br>
-  e. which #tier should be queried.  Note that tiers other than archive allow fewer results (no more than 12,000)<br>
+&nbsp&nbsp&nbspd. the __query__, in the appropriate format as determined by the #syntax element. The default is DataPrime. The query can be used to target priority events, such as those without a message field.<br>
+&nbsp&nbsp&nbspe. which __tier__ should be queried.  Note that tiers other than archive allow fewer results (no more than 12,000)<br>
 4. To run, in a terminal within the directory containing the repo contents, run the command "go run runAll.go".  This runs four scripts in sequence to extract the data, create one line per event, and de-escape the content.<br>
 <br>
 # Output
