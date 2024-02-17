@@ -9,22 +9,24 @@ This [dashboard](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhx
 
 # Usage
 <br>
-1. This utility is written in Go, which you must install, available at: https://go.dev/doc/install. <br>
+1. This utility is written in Go, which you must install, available at: https://go.dev/doc/install.<br>
 <br>
 2. Clone this repo, or download all files herein to the same directory.<br>
 <br>
 3. Update the file "retrieveConfig" to include:<br>
-&nbsp&nbsp&nbspa. the appropriate **url** for the target team (required)<br>
-&nbsp&nbsp&nbspb. the __privateKey__ for that team (required)<br>
-&nbsp&nbsp&nbspc. the __startDate__ and __endDate__<br><br>
+&nbsp&nbsp&nbspa. the appropriate <strong>url</strong> for the target team (required)<br>
+&nbsp&nbsp&nbspb. the <strong>privateKey</strong> for that team (required)<br>
+&nbsp&nbsp&nbspc. the <strong>startDate</strong> and  <strong>endDate</strong><br><br>
   Optionally, you can revise the query parameters to target specific focus areas.<br><br>
-&nbsp&nbsp&nbspd. the __query__, in the appropriate format as determined by the #syntax element. The default is DataPrime. The query can be used to target priority events, such as those without a message field.<br>
-&nbsp&nbsp&nbspe. which __tier__ should be queried.  Note that tiers other than archive allow fewer results (no more than 12,000)<br>
+&nbsp&nbsp&nbspd. the <strong>query</strong>, in the appropriate format as determined by the #syntax element. The default is DataPrime. The query can be used to target priority events, such as those without a message field.<br>
+&nbsp&nbsp&nbspe. which <strong>tier</strong> should be queried.  Note that tiers other than archive allow fewer results (no more than 12,000)<br>
 4. To run, in a terminal within the directory containing the repo contents, run the command "go run runAll.go".  This runs four scripts in sequence to extract the data, create one line per event, and de-escape the content.<br>
 <br>
+
 # Output
-The output consistents of two files, one FinalOutout, which contains the individual events. This file can be used in RegEx101 or other tool.<br> <br>
-The second file, FinalAnalysis, provides a summary of different JSON patterns of the individual events.<br> 
+The output consistents of two files:<br><br>
+<strong>FinalOutout</strong>, which contains the individual events. This file can be used in RegEx101 or other tool.<br> <br>
+<strong>FinalAnalysis</strong>, which provides a summary of different JSON patterns of the individual events.<br><br> 
 Each time the process is run, these files will be overwritten, so save them if you want to retain them. <br>
 
 # To Do
