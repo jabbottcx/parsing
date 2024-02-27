@@ -1,0 +1,846 @@
+{
+  "id": "4SCEP7oosPIhxdgSiwyn3",
+  "name": "Parsing Feedback",
+  "layout": {
+    "sections": [
+      {
+        "id": {
+          "value": "efc80f20-c747-c8b5-b438-cb56915d51df"
+        },
+        "rows": [
+          {
+            "id": {
+              "value": "7486ac6a-8a7f-0380-6849-fe8c83e7096b"
+            },
+            "appearance": {
+              "height": 19
+            },
+            "widgets": [
+              {
+                "id": {
+                  "value": "b7135686-b1a5-df7b-7b7b-e9b3098a3a23"
+                },
+                "title": "'message' Does Not Exist",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "NOT _exists_:message"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-error)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_ARCHIVE",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "6cf4bb86-92eb-0ed2-43e3-0dc79b1538a2"
+                },
+                "title": "Percent of Total w/No. 'message'",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "metrics": {
+                        "promqlQuery": {
+                          "value": "100 * (sum(wipx37_no_message_field_cx_docs_total)/sum(wipx37_event_count_cx_docs_total))"
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_PERCENT",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-info)"
+                      },
+                      {
+                        "from": 5,
+                        "color": "var(--c-severity-log-warning)"
+                      },
+                      {
+                        "from": 10,
+                        "color": "var(--c-severity-log-error)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "89d95a74-1048-1ced-7d01-c9636be89db2"
+                },
+                "title": "Missing 'message' Field",
+                "definition": {
+                  "lineChart": {
+                    "legend": {
+                      "isVisible": true,
+                      "columns": [],
+                      "groupByQuery": true
+                    },
+                    "tooltip": {
+                      "showLabels": false,
+                      "type": "TOOLTIP_TYPE_ALL"
+                    },
+                    "queryDefinitions": [
+                      {
+                        "id": "7d286f96-89a7-d947-809c-9cd51fc4e799",
+                        "query": {
+                          "metrics": {
+                            "promqlQuery": {
+                              "value": "sum(wipx37_no_message_field_cx_docs_total)/sum(wipx37_event_count_cx_docs_total)"
+                            },
+                            "filters": []
+                          }
+                        },
+                        "seriesNameTemplate": "% of Events w/out 'message' Field",
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "% w/out 'message'",
+                        "isVisible": true,
+                        "colorScheme": "red",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED"
+                      }
+                    ]
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "33416257-21ae-080e-f8d1-ab34a3ce9f2a"
+                },
+                "title": "Missing 'message' Field",
+                "definition": {
+                  "lineChart": {
+                    "legend": {
+                      "isVisible": true,
+                      "columns": [],
+                      "groupByQuery": true
+                    },
+                    "tooltip": {
+                      "showLabels": false,
+                      "type": "TOOLTIP_TYPE_ALL"
+                    },
+                    "queryDefinitions": [
+                      {
+                        "id": "ce59eaed-0886-906b-bec1-1b58a442ce1f",
+                        "query": {
+                          "logs": {
+                            "groupBy": [],
+                            "aggregations": [
+                              {
+                                "count": {}
+                              }
+                            ],
+                            "filters": [],
+                            "groupBys": []
+                          }
+                        },
+                        "seriesNameTemplate": "'message' Field",
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "All Events",
+                        "isVisible": true,
+                        "colorScheme": "cold",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_ARCHIVE"
+                      },
+                      {
+                        "id": "b08bcd6a-4ff5-19fe-8bae-d190a19856e9",
+                        "query": {
+                          "logs": {
+                            "luceneQuery": {
+                              "value": "NOT _exists_:message"
+                            },
+                            "groupBy": [],
+                            "aggregations": [
+                              {
+                                "count": {}
+                              }
+                            ],
+                            "filters": [],
+                            "groupBys": []
+                          }
+                        },
+                        "seriesNameTemplate": "No 'message' Field",
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "No message Field",
+                        "isVisible": true,
+                        "colorScheme": "negative",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_ARCHIVE"
+                      }
+                    ]
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": {
+              "value": "28e4ec15-46fd-6a83-a018-6b1aa63f30ec"
+            },
+            "appearance": {
+              "height": 19
+            },
+            "widgets": [
+              {
+                "id": {
+                  "value": "aecdad60-69a2-3622-d42d-052e773c5631"
+                },
+                "title": "'message' Missing by Subsystem",
+                "definition": {
+                  "pieChart": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "NOT _exists_:message"
+                        },
+                        "aggregation": {
+                          "count": {}
+                        },
+                        "filters": [],
+                        "groupNames": [],
+                        "groupNamesFields": [
+                          {
+                            "keypath": [
+                              "subsystemname"
+                            ],
+                            "scope": "DATASET_SCOPE_LABEL"
+                          }
+                        ]
+                      }
+                    },
+                    "maxSlicesPerChart": 8,
+                    "minSlicePercentage": 1,
+                    "stackDefinition": {
+                      "maxSlicesPerStack": 4
+                    },
+                    "labelDefinition": {
+                      "labelSource": "LABEL_SOURCE_INNER",
+                      "isVisible": true,
+                      "showName": true,
+                      "showValue": true,
+                      "showPercentage": true
+                    },
+                    "showLegend": false,
+                    "unit": "UNIT_UNSPECIFIED",
+                    "colorScheme": "classic",
+                    "dataModeType": "DATA_MODE_TYPE_ARCHIVE"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "c14fb92e-d46b-8986-b132-047b657da562"
+                },
+                "title": "'message' Not Exists",
+                "definition": {
+                  "dataTable": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "NOT _exists_:message"
+                        },
+                        "filters": []
+                      }
+                    },
+                    "resultsPerPage": 100,
+                    "rowStyle": "ROW_STYLE_ONE_LINE",
+                    "columns": [
+                      {
+                        "field": "coralogix.timestamp",
+                        "width": 200
+                      },
+                      {
+                        "field": "coralogix.text",
+                        "width": 600
+                      },
+                      {
+                        "field": "coralogix.metadata.applicationName"
+                      },
+                      {
+                        "field": "coralogix.metadata.subsystemName"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_ARCHIVE"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": {
+              "value": "443e7cf1-4250-da5b-9005-2174ebf90909"
+            },
+            "appearance": {
+              "height": 19
+            },
+            "widgets": [
+              {
+                "id": {
+                  "value": "9f18212f-42bd-d1d9-a40d-22f00676168d"
+                },
+                "title": "Unclassified",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "coralogix.templateType:(2 OR 3 OR 4)"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-error)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "399c7877-0e6c-e25d-c0f6-bf21dc11daab"
+                },
+                "title": "Unclassified over Time",
+                "definition": {
+                  "lineChart": {
+                    "legend": {
+                      "isVisible": true,
+                      "columns": [],
+                      "groupByQuery": true
+                    },
+                    "tooltip": {
+                      "showLabels": false,
+                      "type": "TOOLTIP_TYPE_ALL"
+                    },
+                    "queryDefinitions": [
+                      {
+                        "id": "e00cfbb4-a393-149b-0d1b-301e6d5c2e22",
+                        "query": {
+                          "logs": {
+                            "luceneQuery": {
+                              "value": "coralogix.templateType:(2 OR 3 OR 4)"
+                            },
+                            "groupBy": [],
+                            "aggregations": [
+                              {
+                                "count": {}
+                              }
+                            ],
+                            "filters": [],
+                            "groupBys": []
+                          }
+                        },
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "Query 1",
+                        "isVisible": true,
+                        "colorScheme": "negative",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED"
+                      }
+                    ]
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "83e03b94-944c-b952-1bb2-7cd412908678"
+                },
+                "title": "Parsing Failures",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:coralogix.failed_reason"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-error)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "67d96a27-7fd9-0a2b-c865-84533508d44e"
+                },
+                "title": "Parsing Failures over Time",
+                "definition": {
+                  "lineChart": {
+                    "legend": {
+                      "isVisible": true,
+                      "columns": [],
+                      "groupByQuery": true
+                    },
+                    "tooltip": {
+                      "showLabels": false,
+                      "type": "TOOLTIP_TYPE_ALL"
+                    },
+                    "queryDefinitions": [
+                      {
+                        "id": "aa13f83c-27a0-9385-3df4-78e59e6bb69a",
+                        "query": {
+                          "logs": {
+                            "luceneQuery": {
+                              "value": "_exists_:coralogix.failed_reason"
+                            },
+                            "groupBy": [],
+                            "aggregations": [
+                              {
+                                "count": {}
+                              }
+                            ],
+                            "filters": [],
+                            "groupBys": []
+                          }
+                        },
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "Query 1",
+                        "isVisible": true,
+                        "colorScheme": "negative",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED"
+                      }
+                    ]
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": {
+              "value": "3bb3f214-3f90-ce3c-9c53-15ba5de4f167"
+            },
+            "appearance": {
+              "height": 19
+            },
+            "widgets": [
+              {
+                "id": {
+                  "value": "2791124e-4df2-5725-42bf-11f43b749a16"
+                },
+                "title": "Body Field Exists",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:body"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-error)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "02b469af-4e8a-a82e-1c9b-a451e159bbe9"
+                },
+                "title": "Unclassified over Time",
+                "definition": {
+                  "lineChart": {
+                    "legend": {
+                      "isVisible": true,
+                      "columns": [],
+                      "groupByQuery": true
+                    },
+                    "tooltip": {
+                      "showLabels": false,
+                      "type": "TOOLTIP_TYPE_ALL"
+                    },
+                    "queryDefinitions": [
+                      {
+                        "id": "fbfeadf4-0d5d-d99f-45ac-995f7fe80aec",
+                        "query": {
+                          "logs": {
+                            "luceneQuery": {
+                              "value": "_exists_:body"
+                            },
+                            "groupBy": [],
+                            "aggregations": [
+                              {
+                                "count": {}
+                              }
+                            ],
+                            "filters": [],
+                            "groupBys": []
+                          }
+                        },
+                        "seriesCountLimit": "20",
+                        "unit": "UNIT_UNSPECIFIED",
+                        "scaleType": "SCALE_TYPE_LINEAR",
+                        "name": "Query 1",
+                        "isVisible": true,
+                        "colorScheme": "negative",
+                        "resolution": {
+                          "bucketsPresented": 96
+                        },
+                        "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED"
+                      }
+                    ]
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": {
+              "value": "898bfb92-1d19-ba30-b4d6-6a725fa55836"
+            },
+            "appearance": {
+              "height": 19
+            },
+            "widgets": [
+              {
+                "id": {
+                  "value": "d20e4f71-433d-7f51-86f7-f0466a3fe2ed"
+                },
+                "title": "'text' Field Exists",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:text"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-warning)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "7489daf5-d3f9-c832-59fb-a7b23c824eae"
+                },
+                "title": "'msg' Field Exists",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:json.msg"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-info)"
+                      },
+                      {
+                        "from": 1,
+                        "color": "var(--c-severity-log-warning)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "2aac4a15-cd8e-eb9a-1f8c-d1af10a2e398"
+                },
+                "title": "'log' Field Exists",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:log"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-info)"
+                      },
+                      {
+                        "from": 1,
+                        "color": "var(--c-severity-log-warning)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              },
+              {
+                "id": {
+                  "value": "d816525f-5ad8-6ccc-0af7-bc1f277670d4"
+                },
+                "title": "'innerMessage' Field Exists",
+                "definition": {
+                  "gauge": {
+                    "query": {
+                      "logs": {
+                        "luceneQuery": {
+                          "value": "_exists_:innerMessage"
+                        },
+                        "logsAggregation": {
+                          "count": {}
+                        },
+                        "aggregation": "AGGREGATION_UNSPECIFIED",
+                        "filters": []
+                      }
+                    },
+                    "min": 0,
+                    "max": 100,
+                    "showInnerArc": false,
+                    "showOuterArc": false,
+                    "unit": "UNIT_NUMBER",
+                    "thresholds": [
+                      {
+                        "from": 0,
+                        "color": "var(--c-severity-log-info)"
+                      },
+                      {
+                        "from": 50,
+                        "color": "var(--c-severity-log-warning)"
+                      }
+                    ],
+                    "dataModeType": "DATA_MODE_TYPE_HIGH_UNSPECIFIED",
+                    "thresholdBy": "THRESHOLD_BY_BACKGROUND"
+                  }
+                },
+                "appearance": {
+                  "width": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "variables": [],
+  "filters": [
+    {
+      "source": {
+        "logs": {
+          "operator": {
+            "equals": {
+              "selection": {
+                "list": {
+                  "values": []
+                }
+              }
+            }
+          },
+          "observationField": {
+            "keypath": [
+              "applicationname"
+            ],
+            "scope": "DATASET_SCOPE_LABEL"
+          }
+        }
+      },
+      "enabled": true,
+      "collapsed": false
+    },
+    {
+      "source": {
+        "logs": {
+          "operator": {
+            "equals": {
+              "selection": {
+                "list": {
+                  "values": []
+                }
+              }
+            }
+          },
+          "observationField": {
+            "keypath": [
+              "subsystemname"
+            ],
+            "scope": "DATASET_SCOPE_LABEL"
+          }
+        }
+      },
+      "enabled": true,
+      "collapsed": false
+    }
+  ],
+  "relativeTimeFrame": "900s",
+  "annotations": [],
+  "off": {}
+}
