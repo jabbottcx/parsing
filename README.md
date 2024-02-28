@@ -27,5 +27,6 @@ This [dashboard](https://onlineboutique.coralogix.com/#/dashboards/4SCEP7oosPIhx
 # Output
 The output consistents of two files:<br><br>
 <strong>FinalOutout</strong>, which contains the individual events. This file can be used in RegEx101 or other tool.<br> <br>
-<strong>FinalAnalysis</strong>, which provides a summary of different JSON patterns of the individual events.<br><br> 
+<strong>FinalAnalysis</strong>, which provides a summary of different JSON patterns of the individual events.<br><br>
+<strong>finalOutputFieldAnalysis</strong>, which provides a summary of events containing message and other key fields to consider when parsing.<br><br>
 Each time the process is run, these files will be overwritten, so save them if you want to retain them. <br>
